@@ -1,0 +1,18 @@
+.navbar{
+    background-color: #171010;
+    display: flex;
+    padding: 10px;
+    color: yellow;
+}
+
+.navbar_logo{
+    width: 100px;
+    
+}
+
+ li {
+    font-size: 18px;
+    color: white;
+    list-style: none;
+    padding: 10px;
+}

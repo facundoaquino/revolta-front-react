@@ -1,0 +1,10 @@
+.login_main{
+    background-color: #171010;
+    height: 100vh;
+    background-image: url('./../../../assets/fondo.png');
+    background-size: contain;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-blend-mode:  multiply;
+    
+}

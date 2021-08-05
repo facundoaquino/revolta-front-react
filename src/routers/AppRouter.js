@@ -5,14 +5,9 @@ import { UserContext } from '../context/UserContext'
 import DashboardRoutes from './DashboardRoutes'
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
- 
- 
-
-
 
 const AppRouter = () => {
-
-	const {user} = useContext(UserContext)
+	const { user } = useContext(UserContext)
 	// console.log(user);
 	return (
 		<Router>
@@ -20,10 +15,18 @@ const AppRouter = () => {
 				{/* <Navbar /> */}
 
 				<Switch>
-                    <PublicRoute exact path='/login' component={LoginScreen} isAutheticated={user.logged}/>                  
-                    <PrivateRoute  path='/' component={DashboardRoutes} isAutheticated={user.logged}/>
-
-                </Switch>
+					<PublicRoute
+						exact
+						path="/login"
+						component={LoginScreen}
+						isAutheticated={user.logged}
+					/>
+					<PrivateRoute
+						path="/"
+						component={DashboardRoutes}
+						isAutheticated={user.logged}
+					/>
+				</Switch>
 			</div>
 		</Router>
 	)

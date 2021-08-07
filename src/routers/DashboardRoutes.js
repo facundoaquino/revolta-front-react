@@ -2,6 +2,7 @@ import React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import Navbar from '../components/Navbar/Navbar'
 import SoundsVideos from '../components/SoundsVideos/SoundsVideos'
+import Upload from '../components/upload/Upload'
 
 const DashboardRoutes = () => {
 	return (
@@ -10,6 +11,7 @@ const DashboardRoutes = () => {
 
 			<div className="container">
 				<Switch>
+					<Route exact path="/upload" component={Upload} />
 					<Route path="/:ritmo" component={SoundsVideos} />
 				</Switch>
 			</div>

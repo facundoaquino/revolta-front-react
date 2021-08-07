@@ -59,7 +59,7 @@ const Upload = () => {
 					required
 					type="file"
 					name="archivo"
-					accept=".mp3,.mp4,.mpeg,.opus"
+					accept=".mp3,.mp4,.mpeg,.opus,.ogg"
 				/>
 				<button disabled={load} className="upload_button">
 					{load ? 'Subiendo Archivo' : 'Enviar'}

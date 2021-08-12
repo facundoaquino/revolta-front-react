@@ -30,6 +30,10 @@ li {
 	right: 2px;
 	bottom: 2px;
 	padding: 8px;
-	background-color: rgba(133, 21, 207, 0.534);
+	background-color: tomato;
 	border-radius: 2px;
+}
+
+.navbar_upload:hover {
+	font-weight: 600;
 }

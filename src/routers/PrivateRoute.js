@@ -6,7 +6,7 @@ const PrivateRoute = ({ isAutheticated, component: Component, ...rest }) => {
 		<Route
 			{...rest}
 			//no entiendo porque el component se llama con el callback pero tiene el mismo uso que el setState cuando con un callback pasa el valor anterior
-			component={(props) => (isAutheticated ? <Component {...props} /> : <Redirect to="/login" />)}
+			component={(props) => (isAutheticated ? <Component {...props} /> : <Redirect to="/" />)}
 		/>
 	)
 }

@@ -11,8 +11,8 @@ const DashboardRoutes = () => {
 
 			<div className="container">
 				<Switch>
-					<Route exact path="/upload" component={Upload} />
-					<Route path="/:ritmo" component={SoundsVideos} />
+					<Route exact path="/home/upload" component={Upload} />
+					<Route path="/home/:ritmo" component={SoundsVideos} />
 				</Switch>
 			</div>
 		</>

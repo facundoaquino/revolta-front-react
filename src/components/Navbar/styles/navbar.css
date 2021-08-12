@@ -22,6 +22,7 @@ li {
 .navbar_active {
 	color: rgb(105, 105, 6);
 	text-decoration: underline;
+	font-weight: 700;
 }
 .navbar_upload {
 	position: fixed;
@@ -32,6 +33,11 @@ li {
 	padding: 8px;
 	background-color: tomato;
 	border-radius: 2px;
+}
+
+.nav_link {
+	color: white;
+	text-decoration: none;
 }
 
 .navbar_upload:hover {

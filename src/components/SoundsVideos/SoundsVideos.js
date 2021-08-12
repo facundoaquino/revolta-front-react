@@ -15,7 +15,7 @@ const SoundsVideos = () => {
 		setVideos(routes)
 		// console.log(videos)
 	}, [ritmo])
-
+	// console.log(ritmo)
 	return (
 		<main className="main_videos">
 			{videos.map((video) => (

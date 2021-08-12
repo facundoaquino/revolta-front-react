@@ -10,16 +10,16 @@ const AppRouter = () => {
 	const { user } = useContext(UserContext)
 	// console.log(user);
 	return (
-		<HashRouter>
+		<Router>
 			<div>
 				{/* <Navbar /> */}
 
 				<Switch>
-					<PublicRoute exact path="/login" component={LoginScreen} isAutheticated={user.logged} />
-					<PrivateRoute path="/" component={DashboardRoutes} isAutheticated={user.logged} />
+					<PublicRoute exact path="/" component={LoginScreen} isAutheticated={user.logged} />
+					<PrivateRoute path="/home" component={DashboardRoutes} isAutheticated={user.logged} />
 				</Switch>
 			</div>
-		</HashRouter>
+		</Router>
 	)
 }
 

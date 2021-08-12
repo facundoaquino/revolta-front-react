@@ -1,0 +1,35 @@
+.navbar {
+	background-color: #171010;
+	display: flex;
+	padding: 10px;
+	color: yellow;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.navbar_logo {
+	width: 100px;
+}
+
+li {
+	font-size: 14px;
+	color: white;
+	list-style: none;
+	padding: 10px;
+	/* text-decoration: none; */
+}
+
+.navbar_active {
+	color: rgb(105, 105, 6);
+	text-decoration: underline;
+}
+.navbar_upload {
+	position: fixed;
+	text-align: center;
+	width: 150px;
+	right: 2px;
+	bottom: 2px;
+	padding: 8px;
+	background-color: rgba(133, 21, 207, 0.534);
+	border-radius: 2px;
+}

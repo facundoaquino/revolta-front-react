@@ -1,0 +1,21 @@
+.main_videos{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.video_container{
+    padding: 10px;
+}
+.video_name{
+    font-size: 16px;
+    font-weight: 700;
+}
+.video_description{
+    color: rgb(172, 136, 136);
+}
+
+hr{
+    margin: 10px 0;
+
+}

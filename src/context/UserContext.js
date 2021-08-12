@@ -2,6 +2,7 @@ import axios from 'axios'
 import { Notyf } from 'notyf'
 import React, { useState } from 'react'
 import 'notyf/notyf.min.css'
+import { url_enviroment } from '../config/config'
 
 export const UserContext = React.createContext()
 
@@ -9,7 +10,7 @@ const initialLogin = JSON.parse(localStorage.getItem('login')) || false
 
 const UserProvider = ({ children }) => {
 	const [user, setUser] = useState({ logged: initialLogin })
-	const url = process.env.REACT_APP_BASE_URL
+	const url = url_enviroment
 
 	const login = (form) => {
 		console.log(form)
@@ -37,6 +38,7 @@ const UserProvider = ({ children }) => {
 		formData.append('archivo', form.archivo)
 		formData.append('name', form.name)
 		formData.append('description', form.description)
+		formData.append('ritmo', form.ritmo)
 		const resp = await axios({
 			url: `${url}/api/uploads/${form.ritmo}`,
 			method: 'POST',

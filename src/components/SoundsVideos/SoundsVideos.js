@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { url_enviroment } from '../../config/config'
 import { getVideos } from '../../helpers/getVideos'
 
 import './styles/soundsVideos.css'
@@ -7,7 +8,7 @@ import './styles/soundsVideos.css'
 const SoundsVideos = () => {
 	const [videos, setVideos] = useState([])
 	const { ritmo } = useParams()
-	const url = process.env.REACT_APP_BASE_URL
+	const url = url_enviroment
 	useEffect(async () => {
 		const routes = await getVideos(ritmo)
 

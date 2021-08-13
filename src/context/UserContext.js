@@ -13,7 +13,7 @@ const UserProvider = ({ children }) => {
 	const url = url_enviroment
 
 	const login = (form) => {
-		console.log(form)
+		// console.log(form)
 		axios
 			.post(`${url}/api/users/login`, {
 				...form,

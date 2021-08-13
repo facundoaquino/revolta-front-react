@@ -1,0 +1,28 @@
+.homeVideos_container {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	max-width: 500px;
+	justify-content: center;
+	align-content: center;
+	margin: 0 auto;
+}
+
+.videos_link {
+	color: #e4b604;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: calc(2vw + 1vh);
+}
+.video_icon {
+	width: 50px;
+	padding-right: 10px;
+}
+.video_container-link {
+	display: flex;
+	align-items: center;
+	margin: 5px;
+	background-color: black;
+	padding: 20px;
+	border-radius: 10px;
+}

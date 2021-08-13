@@ -11,9 +11,9 @@ const Upload = () => {
 	const handlerSubmit = async (e) => {
 		e.preventDefault()
 		setLoad(true)
-		const result = await uploadFile(form)
 		try {
-			history.push(`/${form.ritmo}`)
+			const result = await uploadFile(form)
+			history.push(`/home/ritmos/${form.ritmo}`)
 		} catch (error) {
 			console.log(error.response)
 		}

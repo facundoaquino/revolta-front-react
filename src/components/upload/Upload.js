@@ -12,7 +12,7 @@ const Upload = () => {
 		e.preventDefault()
 		setLoad(true)
 		try {
-			const result = await uploadFile(form)
+			await uploadFile(form)
 			history.push(`/home/ritmos/${form.ritmo}`)
 		} catch (error) {
 			console.log(error.response)
@@ -23,7 +23,7 @@ const Upload = () => {
 	}
 
 	const hadlerChange = (e) => {
-		if (e.target.name == 'archivo') {
+		if (e.target.name === 'archivo') {
 			setForm({ ...form, archivo: e.target.files[0] })
 			// console.log(e.target.files[0])
 		} else {

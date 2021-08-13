@@ -1,21 +1,21 @@
-.main_videos{
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
+.main_videos {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
 }
 
-.video_container{
-    padding: 10px;
+.video_container {
+	padding: 10px;
+	border-bottom: 2px solid #eee;
 }
-.video_name{
-    font-size: 16px;
-    font-weight: 700;
+.video_name {
+	font-size: 16px;
+	font-weight: 700;
 }
-.video_description{
-    color: rgb(172, 136, 136);
+.video_description {
+	color: rgb(172, 136, 136);
 }
 
-hr{
-    margin: 10px 0;
-
+hr {
+	margin: 10px 0;
 }

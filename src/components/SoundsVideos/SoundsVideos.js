@@ -9,10 +9,13 @@ const SoundsVideos = () => {
 	const [videos, setVideos] = useState([])
 	const { ritmo } = useParams()
 	const url = url_enviroment
-	useEffect(async () => {
-		const routes = await getVideos(ritmo)
+	useEffect(() => {
+		async function getData() {
+			const routes = await getVideos(ritmo)
 
-		setVideos(routes)
+			setVideos(routes)
+		}
+		getData()
 		// console.log(videos)
 	}, [ritmo])
 	// console.log(ritmo)
@@ -23,7 +26,6 @@ const SoundsVideos = () => {
 					<div className="video_name">{video.name}</div>
 					<p className="video_description">{video.description}</p>
 					<video src={`${url}/api/uploads/${ritmo}/${video.path}`} width="300" controls></video>
-					<hr />
 				</div>
 			))}
 		</main>

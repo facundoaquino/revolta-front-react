@@ -10,15 +10,17 @@ const HomeVideos = () => {
 	const [load, setLoad] = useState(false)
 	// console.log(ritmos)
 
-	useEffect(async () => {
-		setLoad(true)
-		const rhythms = await getRhythms()
-		setRitmos(rhythms)
-		setLoad(false)
-		// console.log(ritmos)
+	useEffect(() => {
+		async function getData() {
+			setLoad(true)
+			const rhythms = await getRhythms()
+			setRitmos(rhythms)
+			setLoad(false)
+			// console.log(ritmos)
+		}
+		getData()
 	}, [])
 
-	console.log('render de home videos')
 	return load ? (
 		<Loader />
 	) : (

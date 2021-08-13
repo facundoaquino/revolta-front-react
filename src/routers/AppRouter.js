@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { BrowserRouter as Router, Switch, Route, HashRouter } from 'react-router-dom'
+import { Switch, HashRouter } from 'react-router-dom'
 import LoginScreen from '../components/loginScreen/LoginScreen'
 import { UserContext } from '../context/UserContext'
 import DashboardRoutes from './DashboardRoutes'
@@ -10,7 +10,7 @@ const AppRouter = () => {
 	const { user } = useContext(UserContext)
 	// console.log(user);
 	return (
-		<Router>
+		<HashRouter>
 			<div>
 				{/* <Navbar /> */}
 
@@ -19,7 +19,7 @@ const AppRouter = () => {
 					<PublicRoute exact path="/" component={LoginScreen} isAutheticated={user.logged} />
 				</Switch>
 			</div>
-		</Router>
+		</HashRouter>
 	)
 }
 

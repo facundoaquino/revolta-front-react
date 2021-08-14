@@ -34,15 +34,51 @@
 .input_file {
 	margin-top: 20px;
 }
+.upload_button-container {
+	/* background-color: rgba(0, 0, 0, 0.397); */
+	/* padding: 8px; */
+	margin-top: 10px;
+	position: relative;
+	background-color: tomato;
+	color: white;
+	cursor: pointer;
+	padding: 8px;
+	text-align: center;
+	font-weight: 500;
+}
+
+.upload_button-bar {
+	background-color: rgba(230, 43, 10, 0.596);
+	border-radius: 5px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 2;
+	transition: all 0.5s ease-in;
+}
+.upload_button-text {
+	background-color: transparent;
+	position: relative;
+	z-index: 4;
+}
 
 .upload_button {
-	margin-top: 10px;
-	background-color: tomato;
+	position: absolute;
+	z-index: 5;
+	/* margin-top: 10px; */
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	background-color: transparent;
 	outline: none;
 	border: none;
 	border-radius: 5px;
-	padding: 8px;
 	color: white;
 	font-size: 16px;
 	cursor: pointer;
+	width: 100%;
+	display: block;
 }

@@ -3,13 +3,15 @@ import { Notyf } from 'notyf'
 import React, { useState } from 'react'
 import 'notyf/notyf.min.css'
 import { url_enviroment } from '../config/config'
+import AppRouter from '../routers/AppRouter'
 
 export const UserContext = React.createContext()
 
 const initialLogin = JSON.parse(localStorage.getItem('login')) || false
 
-const UserProvider = ({ children }) => {
+const UserProvider = () => {
 	const [user, setUser] = useState({ logged: initialLogin })
+	const [percentage, setPercentage] = useState(0)
 	const url = url_enviroment
 
 	const login = (form) => {
@@ -43,12 +45,20 @@ const UserProvider = ({ children }) => {
 			url: `${url}/api/uploads/${form.ritmo}`,
 			method: 'POST',
 			data: formData,
+			onUploadProgress: ({ total, loaded }) => {
+				let percent = Math.floor((loaded * 100) / total)
+				setPercentage(percent)
+			},
 		})
 
 		return resp
 	}
 
-	return <UserContext.Provider value={{ user, login, uploadFile }}>{children}</UserContext.Provider>
+	return (
+		<UserContext.Provider value={{ user, login, uploadFile, percentage }}>
+			<AppRouter />
+		</UserContext.Provider>
+	)
 }
 
 export default UserProvider

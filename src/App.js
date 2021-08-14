@@ -5,11 +5,7 @@ import AppRouter from './routers/AppRouter'
 import './styles/App.css'
 
 const App = () => {
-    return (
-        <UserProvider>
-            <AppRouter/>
-        </UserProvider>
-    )
+	return <UserProvider />
 }
 
 export default App

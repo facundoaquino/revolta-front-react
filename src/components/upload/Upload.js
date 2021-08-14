@@ -1,10 +1,16 @@
+import axios from 'axios'
 import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { url_enviroment } from '../../config/config'
 import { UserContext } from '../../context/UserContext'
+import validateFile from '../../helpers/validateFile'
 import './styles/upload.css'
 const Upload = () => {
 	const [form, setForm] = useState({ name: '', description: '', ritmo: '', archivo: '' })
-	const { uploadFile } = useContext(UserContext)
+	// const { uploadFile, percentage } = useContext(UserContext)
+	const [percentage, setPercentage] = useState(0)
+	const url = url_enviroment
+
 	const [load, setLoad] = useState(false)
 	const history = useHistory()
 
@@ -12,7 +18,23 @@ const Upload = () => {
 		e.preventDefault()
 		setLoad(true)
 		try {
-			await uploadFile(form)
+			// await uploadFile(form)
+			let formData = new FormData()
+
+			formData.append('archivo', form.archivo)
+			formData.append('name', form.name)
+			formData.append('description', form.description)
+			formData.append('ritmo', form.ritmo)
+			await axios({
+				url: `${url}/api/uploads/${form.ritmo}`,
+				method: 'POST',
+				data: formData,
+				onUploadProgress: ({ total, loaded }) => {
+					let percent = Math.floor((loaded * 100) / total)
+					setPercentage(percent)
+				},
+			})
+
 			history.push(`/home/ritmos/${form.ritmo}`)
 		} catch (error) {
 			console.log(error.response)
@@ -22,8 +44,16 @@ const Upload = () => {
 		// console.log('subido')
 	}
 
+	// console.log(percentage)
 	const hadlerChange = (e) => {
 		if (e.target.name === 'archivo') {
+			// console.log(e.target.files[0])
+			const isBig = validateFile(e.target.files[0].size)
+			if (isBig) {
+				e.target.value = ''
+				return
+			}
+
 			setForm({ ...form, archivo: e.target.files[0] })
 			// console.log(e.target.files[0])
 		} else {
@@ -61,9 +91,11 @@ const Upload = () => {
 					name="archivo"
 					accept=".mp3,.mp4,.mpeg,.opus,.ogg"
 				/>
-				<button disabled={load} className="upload_button">
-					{load ? 'Subiendo Archivo' : 'Enviar'}
-				</button>
+				<div className="upload_button-container">
+					<div className="upload_button-bar" style={{ width: `${percentage}%` }}></div>
+					<button disabled={load} className="upload_button"></button>
+					<div className="upload_button-text">{load ? `Subiendo Archivo ${percentage}%` : 'Enviar'}</div>
+				</div>
 			</form>
 		</div>
 	)

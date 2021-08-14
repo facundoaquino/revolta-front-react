@@ -25,7 +25,12 @@ const SoundsVideos = () => {
 				<div key={video.path} className="video_container">
 					<div className="video_name">{video.name}</div>
 					<p className="video_description">{video.description}</p>
-					<video src={`${url}/api/uploads/${ritmo}/${video.path}`} width="300" controls></video>
+					<video
+						src={`${url}/api/uploads/${ritmo}/${video.path}`}
+						width="300px"
+						codecs="avc1, mp4a"
+						controls
+					></video>
 				</div>
 			))}
 		</main>

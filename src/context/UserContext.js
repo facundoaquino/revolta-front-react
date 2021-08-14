@@ -11,7 +11,7 @@ const initialLogin = JSON.parse(localStorage.getItem('login')) || false
 
 const UserProvider = () => {
 	const [user, setUser] = useState({ logged: initialLogin })
-	const [percentage, setPercentage] = useState(0)
+
 	const url = url_enviroment
 
 	const login = (form) => {
@@ -34,28 +34,13 @@ const UserProvider = () => {
 			})
 	}
 
-	const uploadFile = async (form, file) => {
-		let formData = new FormData()
-
-		formData.append('archivo', form.archivo)
-		formData.append('name', form.name)
-		formData.append('description', form.description)
-		formData.append('ritmo', form.ritmo)
-		const resp = await axios({
-			url: `${url}/api/uploads/${form.ritmo}`,
-			method: 'POST',
-			data: formData,
-			onUploadProgress: ({ total, loaded }) => {
-				let percent = Math.floor((loaded * 100) / total)
-				setPercentage(percent)
-			},
-		})
-
-		return resp
+	const logout = () => {
+		localStorage.removeItem('login')
+		setUser({ logged: false })
 	}
 
 	return (
-		<UserContext.Provider value={{ user, login, uploadFile, percentage }}>
+		<UserContext.Provider value={{ user, login, logout }}>
 			<AppRouter />
 		</UserContext.Provider>
 	)

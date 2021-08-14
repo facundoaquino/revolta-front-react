@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 
 import './styles/navbar.css'
 import logo from './../../assets/fondo.png'
+import LogOut from '../LogOut/LogOut'
 const Navbar = () => {
 	// console.log('render')
 	return (
@@ -21,6 +22,8 @@ const Navbar = () => {
 						Subir
 					</NavLink>
 				</li>
+
+				<LogOut />
 			</ul>
 		</nav>
 	)

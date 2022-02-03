@@ -3,6 +3,8 @@ import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { url_enviroment } from '../../config/config'
 import { UserContext } from '../../context/UserContext'
+import showErrorByMsg from '../../helpers/showErrorByMsg'
+import validateExtenxionFile from '../../helpers/validateExtenxionFile'
 import validateFile from '../../helpers/validateFile'
 import './styles/upload.css'
 const Upload = () => {
@@ -17,6 +19,7 @@ const Upload = () => {
 	const handlerSubmit = async (e) => {
 		e.preventDefault()
 		setLoad(true)
+
 		try {
 			// await uploadFile(form)
 			let formData = new FormData()
@@ -47,11 +50,22 @@ const Upload = () => {
 	// console.log(percentage)
 	const hadlerChange = (e) => {
 		if (e.target.name === 'archivo') {
-			// console.log(e.target.files[0])
-			const isBig = validateFile(e.target.files[0].size)
+			console.log(e.target.files)
+
+			const isBig = validateFile(e.target.files[0]?.size)
 			if (isBig) {
 				e.target.value = ''
 				return
+			}
+
+			//Asking if there is a file to check the etenxion of it
+			if (e.target.files.length === 1) {
+				const extValid = validateExtenxionFile(e.target.files[0].name)
+				if (!extValid) {
+					showErrorByMsg('Archivo no permitido , solo podes subir videos')
+					e.target.value = ''
+					return
+				}
 			}
 
 			setForm({ ...form, archivo: e.target.files[0] })
@@ -67,11 +81,25 @@ const Upload = () => {
 				<label className="upload_label" htmlFor="name">
 					Titulo
 				</label>
-				<input onChange={hadlerChange} className="upload_input" required id="name" type="text" name="name" />
+				<input
+					onChange={hadlerChange}
+					className="upload_input"
+					required
+					id="name"
+					type="text"
+					name="name"
+				/>
 				<label className="upload_label" htmlFor="ritmo">
 					Ritmo
 				</label>
-				<input onChange={hadlerChange} className="upload_input" required id="ritmo" type="text" name="ritmo" />
+				<input
+					onChange={hadlerChange}
+					className="upload_input"
+					required
+					id="ritmo"
+					type="text"
+					name="ritmo"
+				/>
 				<label className="upload_label" htmlFor="description">
 					Descripcion
 				</label>
@@ -94,7 +122,9 @@ const Upload = () => {
 				<div className="upload_button-container">
 					<div className="upload_button-bar" style={{ width: `${percentage}%` }}></div>
 					<button disabled={load} className="upload_button"></button>
-					<div className="upload_button-text">{load ? `Subiendo Archivo ${percentage}%` : 'Enviar'}</div>
+					<div className="upload_button-text">
+						{load ? `Subiendo Archivo ${percentage}%` : 'Enviar'}
+					</div>
 				</div>
 			</form>
 		</div>

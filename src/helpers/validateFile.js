@@ -1,7 +1,7 @@
 import { Notyf } from 'notyf'
 import 'notyf/notyf.min.css'
 
-const validateFile = (size) => {
+const validateFile = (size = 0) => {
 	if (size / 1024 / 1024 > 500) {
 		const notyf = new Notyf()
 		notyf.error({

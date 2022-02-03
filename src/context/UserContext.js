@@ -25,7 +25,7 @@ const UserProvider = () => {
 				setUser({ logged: true })
 			})
 			.catch(({ response }) => {
-				console.log(response.data.msg)
+				// console.log(response.data.msg)
 				const notyf = new Notyf()
 				notyf.error({
 					message: 'usuario a pass incorrecta',

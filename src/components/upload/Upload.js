@@ -1,15 +1,18 @@
 import axios from 'axios'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { url_enviroment } from '../../config/config'
 import { UserContext } from '../../context/UserContext'
+import { getRhythms } from '../../helpers/getRhythms'
 import showErrorByMsg from '../../helpers/showErrorByMsg'
 import validateExtenxionFile from '../../helpers/validateExtenxionFile'
 import validateFile from '../../helpers/validateFile'
+import { SelectRhythm } from './SelectRhythm/SelectRhythm'
 import './styles/upload.css'
 const Upload = () => {
 	const [form, setForm] = useState({ name: '', description: '', ritmo: '', archivo: '' })
-	// const { uploadFile, percentage } = useContext(UserContext)
+	// state about rythms for the input selec who charges dinamically
+	const [rhythms, setRhythms] = useState([])
 	const [percentage, setPercentage] = useState(0)
 	const url = url_enviroment
 
@@ -75,6 +78,16 @@ const Upload = () => {
 		}
 	}
 
+	useEffect(() => {
+		const Rhythms = async () => {
+			const r = await getRhythms()
+			setRhythms(r)
+		}
+		setTimeout(() => {
+			Rhythms()
+		}, 2000)
+	}, [])
+
 	return (
 		<div className="upload_container">
 			<form onSubmit={handlerSubmit} className="upload__form">
@@ -92,14 +105,13 @@ const Upload = () => {
 				<label className="upload_label" htmlFor="ritmo">
 					Ritmo
 				</label>
-				<input
-					onChange={hadlerChange}
-					className="upload_input"
-					required
-					id="ritmo"
-					type="text"
-					name="ritmo"
-				/>
+
+				{rhythms.length > 0 ? (
+					<SelectRhythm rhythms={rhythms} hadlerChange={hadlerChange} />
+				) : (
+					'Cargando ritmos...'
+				)}
+
 				<label className="upload_label" htmlFor="description">
 					Descripcion
 				</label>

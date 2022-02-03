@@ -13,9 +13,18 @@
 }
 .upload_input {
 	padding: 5px;
+	border: 1px solid #a81e05;
+	border-radius: 8px;
+	outline: none;
+}
+
+.upload_input:focus {
+	outline: 0.5px solid #a81e05;
 }
 
 .upload_textarea {
+	outline: 0.5px solid #a81e05;
+	border-radius: 8px;
 	/* display: block;
 	width: 500px;
 	height: 500px; */
@@ -27,7 +36,9 @@
 }
 
 .upload_label {
-	font-weight: 500;
+	font-weight: 600;
+	color: rgb(92, 86, 86);
+	margin-bottom: 5px;
 }
 
 .upload_label,
